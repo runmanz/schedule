@@ -1,9 +1,32 @@
 table{
     border-top: 1px solid #0f0;
     border-left: 1px solid #0f0;
+    width: 95%;
+    font-weight: bold;
+    text-align: center;
 }
 td,th{
     border-right: 1px solid #0f0;
     border-bottom: 1px solid #0f0;
-    width: 80px;
+    width: 14%;
+    padding: 10px 0 !important;
+    color: #ffffff;
+}
+th{
+    background-color: #555555;
+    color: #ffffff;
+}
+.on{
+    background-color: #3D9541;
+    border: 2px solid #000000;
+}
+tr{
+    background-color: #5cb85c;
+}
+tr:first-child,tr:first-child > td{
+    background-color: #ffffff;
+    color: #0f0f0f;
+}
+.off{
+    color: #979797;
 }

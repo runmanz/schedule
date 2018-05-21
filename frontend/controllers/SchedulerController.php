@@ -13,7 +13,10 @@ class SchedulerController extends Controller{
     public function actionAddScheduler(){
         if(Yii::$app->request->isPost) {
             $post = Yii::$app->request->post(); /// 获取post值
-
+            if(empty($post['name'])){
+                Yii::$app->response->format = 'json';
+                return ['status' => 1003, 'msg' => "姓名不能为空"];
+            }
             $model = new Scheduler(); /// 添加新记录
             $model->created_at = $model->updated_at = time();
             Yii::$app->response->format = 'json'; /// 返回格式为json

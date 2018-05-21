@@ -5,3 +5,5 @@
 .row{margin: 0 auto!important;}
 .schedulers-name{margin: 5px 0;padding: 5px 10px!important;border-radius: 3px;cursor: pointer;text-align: center;color: #3e8f3e;}
 .schedulers-name:hover{background-color: red;color: #fff;border: 1px solid #000;padding: 4px 9px!important;}
+.selected{background-color: #5cb85c;color: #fff;border: 1px solid #000;padding: 4px 9px!important;}
+.calendar td{cursor: pointer;}

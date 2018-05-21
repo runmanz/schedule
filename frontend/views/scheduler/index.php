@@ -54,10 +54,22 @@ Modal::begin([
 Modal::end();
 ?>
 <?php
+Modal::begin([
+    'id' => 'scheduler--modal',
+    'header' => '<h4 class="modal-title">选择值班人员</h4>',
+    'footer' => '<button type="button" class="btn btn-danger" data-dismiss="modal">关闭</button>',
+]);
+?>
+<div class="row">
+</div>
+<div class="help-block" style="color:red">点击人名, 删除值班人员</div>
+<?php
+Modal::end();
+?>
+<?php
 $addSchedulerUrl = Url::toRoute("add-scheduler");
 $schedulerListUrl = Url::toRoute("list");
 $deleteSchedulerUrl = Url::toRoute("del-scheduler");
-$schedulerSelectUrl = Url::toRoute("scheduler-select");
 
 $js = <<<JS
     $(".add-scheduler-submit").on("click",function() {
@@ -105,4 +117,5 @@ $js = <<<JS
     });
 JS;
 $this->registerJs($js);
+$this->registerJsFile("/js/calendar.js");
 ?>
