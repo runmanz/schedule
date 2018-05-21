@@ -36,14 +36,13 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '' => 'scheduler/index'  /// 默认首页
             ],
         ],
-        */
     ],
     'params' => $params,
 ];
