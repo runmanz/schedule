@@ -50,6 +50,6 @@ class Calendar extends \yii\db\ActiveRecord
      * @return yii\db\ActiveQuery
     */
     public function getScheduler(){
-        return $this->hasOne(Scheduler::className(), ['s_id' => 'id']);
+        return $this->hasOne(Scheduler::className(), ['id' => 's_id']);
     }
 }

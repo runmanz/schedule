@@ -40,7 +40,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '' => 'scheduler/index'  /// 默认首页
+                '' => 'calendar/index'  /// 默认首页
             ],
         ],
     ],

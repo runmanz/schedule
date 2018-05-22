@@ -30,3 +30,7 @@ tr:first-child,tr:first-child > td{
 .off{
     color: #979797;
 }
+.month-off{
+    color: #979797 !important;
+    cursor: auto !important;
+}

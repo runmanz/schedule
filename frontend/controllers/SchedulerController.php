@@ -1,13 +1,23 @@
 <?php
 namespace frontend\controllers;
 
+use frontend\models\Calendar;
+use frontend\models\searches\Calendar as CalendarSearch;
 use frontend\models\Scheduler;
 use Yii;
 use yii\web\Controller;
 
 class SchedulerController extends Controller{
     public function actionIndex(){
-        return $this->render('index',[]);
+        $calendarSearch = new CalendarSearch();
+        $data = $calendarSearch->getCalendars(Yii::$app->request->queryParams);
+
+        $month = !isset(Yii::$app->request->queryParams['month']) ? 1 : Yii::$app->request->queryParams['month'];
+
+        return $this->render('index',[
+            'data' => $data,
+            'month' => $month
+        ]);
     }
 
     public function actionAddScheduler(){
@@ -69,8 +79,33 @@ class SchedulerController extends Controller{
         }
     }
 
+    public function actionSelect($id,$date){
+        $date = strtotime($date);
+        $calendar = $this->findCalendarByDate($date);
+        if(empty($calendar)){
+            $calendar = new Calendar();
+            $calendar->time = $date;
+        }
+        $calendar->s_id = $id;
+        $calendar->created_at = time();
+        Yii::$app->response->format = 'json';
+        if($calendar->save()) {
+            return ['status' => 1001];
+        }else{
+            return ['status' => 1002, 'msg' => '字母字母，字母他又来了，这一次他搞垮了数据库，你再试试看看能不能突破他的封锁'];
+        }
+    }
+
     protected function findScheduler($id){
         if(($model = Scheduler::findOne([$id])) !== false){
+            return $model;
+        }else{
+            return null;
+        }
+    }
+
+    protected function findCalendarByDate($date){
+        if(($model = Calendar::findOne(['time'=>$date])) !== false){
             return $model;
         }else{
             return null;
